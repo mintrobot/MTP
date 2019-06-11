@@ -6,7 +6,6 @@ MTP(Mintrobot Teaching Pendant) is a GUI based application that can control mani
 2019. 06. 11
 Justin H. Kang / CEO and Founder of MINTROBOT Co., Ltd.
 
-
 - Tested Environment
 1. OS : Windows 10 / 1920x1080 
 2. Build environment : Qt Creator 4.8 (Qt 5.11.3 / MinGW 5.3.0 32bit for C++ ) 
