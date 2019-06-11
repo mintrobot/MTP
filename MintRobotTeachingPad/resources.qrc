@@ -1,0 +1,40 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>images/add.png</file>
+        <file>images/arrow_down.png</file>
+        <file>images/arrow_right.png</file>
+        <file>images/arrow_up.png</file>
+        <file>images/close.png</file>
+        <file>images/controller.png</file>
+        <file>images/delete.png</file>
+        <file>images/file.png</file>
+        <file>images/home.png</file>
+        <file>images/minus.png</file>
+        <file>images/ok.png</file>
+        <file>images/pause.png</file>
+        <file>images/play.png</file>
+        <file>images/return.png</file>
+        <file>images/save.png</file>
+        <file>images/set.png</file>
+        <file>images/edit.png</file>
+        <file>images/setting.png</file>
+        <file>images/input_output.png</file>
+        <file>images/set_this_position.png</file>
+        <file>images/get_current_position.png</file>
+        <file>font/OpenSans-Bold.ttf</file>
+        <file>font/OpenSans-Regular.ttf</file>
+        <file>images/bg_pattern3.jpg</file>
+        <file>images/rotXminus.png</file>
+        <file>images/rotXplus.png</file>
+        <file>images/rotYminus.png</file>
+        <file>images/rotYplus.png</file>
+        <file>images/rotZminus.png</file>
+        <file>images/rotZplus.png</file>
+        <file>images/transXminus.png</file>
+        <file>images/transXplus.png</file>
+        <file>images/transYminus.png</file>
+        <file>images/transYplus.png</file>
+        <file>images/transZminus.png</file>
+        <file>images/transZplus.png</file>
+    </qresource>
+</RCC>
