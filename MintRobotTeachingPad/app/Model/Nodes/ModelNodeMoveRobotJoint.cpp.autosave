@@ -1,0 +1,64 @@
+#include "ModelNodeMoveRobotJoint.h"
+
+ModelNodeMoveRobot::ModelNodeMoveRobot(QUuid uuid) : ModelNode(uuid) {
+    for (int i = 0 ; i < 6; i++) {
+        vectorTargetJoint.append(ModelValue());
+    }
+}
+
+ModelNodeMoveRobot::~ModelNodeMoveRobot() {
+
+}
+
+void ModelNodeMoveRobot::cloneData(const ModelNodeMoveRobot& modelModeRobotJoint) {
+
+    for (int i = 0 ; i < vectorTargetJoint.size(); i++) {
+        vectorTargetJoint[i] = modelModeRobotJoint.vectorTargetJoint.at(i);
+    }
+    vel = modelModeRobotJoint.vel;
+    accel = modelModeRobotJoint.accel;
+    flagRelative = modelModeRobotJoint.flagRelative;
+}
+
+
+QString ModelNodeMoveRobot::getArgumentsString() {
+    QString res = "[";
+    for (int i = 0; i < vectorTargetJoint.size(); i++) {
+        res += vectorTargetJoint[i].getValueInStringFormat();
+        if (i < vectorTargetJoint.size() - 1) {
+            res += ", ";
+        }
+    }
+    res += "]";
+    res += "[" + QString::number(vel, 'f', 2) + "]";
+    res += "[" + QString::number(accel, 'f', 2) + "]";
+
+    return res;
+}
+
+QUuid ModelNodeMoveRobot::execute() {
+    ModelProject* pProject = SingletonRuntimeProject::GetInstance().getProjectModel();
+    QVector<double> target;
+
+    for (int i = 0 ; i < 6; i++) {
+        if (vectorTargetJoint[i].isRreference) {
+            target.append(pProject->getVariableValue(vectorTargetJoint[i].referenceName));
+        }
+        else {
+            target.append(vectorTargetJoint[i].value);
+        }
+    }
+
+    if (flagRelative) {
+        __pRobotCommand->moveRobotJointRel(target, vel, accel);
+    }
+    else {
+         __pRobotCommand->moveRobotJointAbs(target, vel, accel);
+    }
+    QThread::msleep(100);
+    while (__pRobotCommand->isCommandRunning()) {
+        QThread::msleep(10);
+    }
+    return nextNodeID;
+}
+
